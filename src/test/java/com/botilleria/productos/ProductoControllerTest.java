@@ -29,7 +29,7 @@ public class ProductoControllerTest {
 
     @Test
     public void listarCatalogo_DeberiaRetornarListaDeProductos() throws Exception {
-        Producto p1 = new Producto(1L, "Pisco Alto del Carmen 35°", 5500, 20);
+        Producto p1 = new Producto(1L, "Pisco Alto del Carmen 35°", 7500, 20, "https://via.placeholder.com/200");
         Mockito.when(servicioDeProducto.obtenerTodos()).thenReturn(List.of(p1));
 
         mockMvc.perform(get("/api/productos"))
