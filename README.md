@@ -1,6 +1,6 @@
 ﻿# MS-Productos
 
-Microservicio encargado de gestionar el catlogo e inventario de la botillera.
+Microservicio encargado de gestionar el catalogo e inventario de la botillera.
 
 ## Caractersticas
 - Expone endpoints para consultar los productos disponibles.
