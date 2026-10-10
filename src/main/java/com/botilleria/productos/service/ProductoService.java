@@ -28,4 +28,12 @@ public class ProductoService {
                 .findFirst()
                 .orElse(null);
     }
+    public void descontarStock(Long identificador, Integer cantidad) {
+        Producto p = buscarPorId(identificador);
+        if (p != null) {
+            int nuevoInventario = p.getInventario() - cantidad;
+            p.setInventario(nuevoInventario < 0 ? 0 : nuevoInventario);
+            System.out.println("Stock descontado para " + p.getNombre() + ". Nuevo stock: " + p.getInventario());
+        }
+    }
 }
