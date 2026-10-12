@@ -1,10 +1,20 @@
-package com.botilleria.productos.model;
+﻿package com.botilleria.productos.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "productos")
 public class Producto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long identificador;
+    
     private String nombre;
     private Integer precio;
     private Integer inventario;
+    
+    @Column(columnDefinition = "TEXT")
     private String imagen;
 
     public Producto() {
