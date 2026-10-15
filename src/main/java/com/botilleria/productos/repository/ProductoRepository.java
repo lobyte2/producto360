@@ -1,4 +1,4 @@
-﻿package com.botilleria.productos.repository;
+package com.botilleria.productos.repository;
 
 import com.botilleria.productos.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
