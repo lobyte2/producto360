@@ -23,13 +23,25 @@ spring:
     port: 5672
     username: admin
     password: admin123
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        max.block.ms: 2500
+        request.timeout.ms: 2500
+        delivery.timeout.ms: 3500
   cloud:
     azure:
       active-directory:
         enabled: false
 
-# Configuración Multi-Proveedor JWT (Azure Entra ID + AWS Cognito)
+# Configuración Kafka y Multi-Proveedor JWT (Azure Entra ID + AWS Cognito)
 app:
+  kafka:
+    enabled: ${KAFKA_ENABLED:true}
+    topic-productos: ${KAFKA_TOPIC_PRODUCTOS:productos.eventos}
   security:
     jwt:
       providers:
