@@ -25,6 +25,11 @@ spring:
     password: admin123
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: ${KAFKA_GROUP_ID:ms-productos-group}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -32,6 +37,9 @@ spring:
         max.block.ms: 2500
         request.timeout.ms: 2500
         delivery.timeout.ms: 3500
+    listener:
+      missing-topics-fatal: false
+      auto-startup: ${KAFKA_ENABLED:true}
   cloud:
     azure:
       active-directory:
@@ -42,6 +50,7 @@ app:
   kafka:
     enabled: ${KAFKA_ENABLED:true}
     topic-productos: ${KAFKA_TOPIC_PRODUCTOS:productos.eventos}
+    topic-carrito: ${KAFKA_TOPIC_CARRITO:carrito.eventos}
   security:
     jwt:
       providers:
